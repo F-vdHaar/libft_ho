@@ -6,7 +6,7 @@
 #    By: fvon-der <fvon-der@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/06 17:37:23 by fvon-der          #+#    #+#              #
-#    Updated: 2024/03/06 18:56:47 by fvon-der         ###   ########.fr        #
+#    Updated: 2024/03/06 21:55:00 by fvon-der         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ CFLAGS = -Wall -Wextra -Werror -I.
 DEPS = libft.h
 # Executable name
 NAME = libft
+# Library file
+LIBRARY = libft.a
 # Collect all source files
 SRCS = $(wildcard *.c)
 # Generate corresponding object files
@@ -27,10 +29,13 @@ OBJS = $(SRCS:.c=.o)
 .PHONY: all clean fclean re
 
 # Default target
-all: $(NAME)
+all: $(LIBRARY)
 
+# Rule to build the library
+$(LIBRARY): $(OBJS)
+	ar rcs $@ $^
 
-# Rule to build the executable
+# Rule to build the executable  , unistd.h link not necessary
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $^
 
@@ -44,7 +49,7 @@ $(NAME): $(OBJS)
 
 # Clean up generated files
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(LIBRARY)
 
 # Remove all generated files and the executable
 fclean: clean
