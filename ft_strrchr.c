@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fvon-der <fvon-der@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 06:31:16 by fvon-der          #+#    #+#             */
-/*   Updated: 2024/03/23 09:50:11 by fvon-der         ###   ########.fr       */
+/*   Created: 2024/03/07 16:10:17 by fvon-der          #+#    #+#             */
+/*   Updated: 2024/03/23 05:35:30 by fvon-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+//locates the locates occurrence of c (converted to a char)
+//in string pointed to by s.
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	len;
-	char	*s2;
+	char	*last_occurrence;
 
-	len = ft_strlen(s1);
-	s2 = (char *)malloc(len + 1);
-	if (s2 == NULL)
-		return (NULL);
-	ft_strlcpy(s2, s1, len + 1);
-	return (s2);
+	last_occurrence = NULL;
+	while (*s)
+	{
+		if (*s == (char) c)
+			last_occurrence = ((char *)s);
+		s++;
+	}
+	if ((char) c == '\0')
+		return ((char *)s);
+	return (last_occurrence);
 }

@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fvon-der <fvon-der@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fvon-der <fvon-der@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 20:10:06 by fvon-der          #+#    #+#             */
-/*   Updated: 2024/03/07 07:39:09 by fvon-der         ###   ########.fr       */
+/*   Created: 2024/03/07 01:55:08 by fvon-der          #+#    #+#             */
+/*   Updated: 2024/03/23 05:24:56 by fvon-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strchr(const char *s, int c)
 {
-	int	res;
-
-	res = 0;
-	if ((c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z'))
-		res = 1;
-	return (res);
+	while (*s)
+	{
+		if (*s == (char) c)
+			return ((char *)s);
+		s++;
+	}
+	if ((char) c == '\0')
+		return ((char *)s);
+	return (NULL);
 }
-
-/*
-int main() {
-
-	char source[] = "eggsandham";
-
-    ft_str_is_alpha(source);
-
-    return 0;
-}
-*/

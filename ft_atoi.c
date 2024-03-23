@@ -6,17 +6,15 @@
 /*   By: fvon-der <fvon-der@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:58:20 by fvon-der          #+#    #+#             */
-/*   Updated: 2024/03/06 22:35:15 by fvon-der         ###   ########.fr       */
+/*   Updated: 2024/03/07 08:16:05 by fvon-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <limits.h>
+#include "libft.h"
 
 int	ft_isspace(char c);
-int	ft_atoi(char *str);
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	sign;
 	int	result;

@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fvon-der <fvon-der@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 20:10:06 by fvon-der          #+#    #+#             */
-/*   Updated: 2024/03/07 07:39:09 by fvon-der         ###   ########.fr       */
+/*   Created: 2024/03/22 14:47:22 by fvon-der          #+#    #+#             */
+/*   Updated: 2024/03/22 16:19:46 by fvon-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	**ft_split(const char *s, char c)
 {
-	int	res;
+	char	**spl_str;
+	int		spl_start;
+	int		str_count;
+	int		i;
 
-	res = 0;
-	if ((c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z'))
-		res = 1;
-	return (res);
+	i = 0;
+	str_count = 0;
+	spl_start = 0;
+	spl_str = (char **)calloc(ft_strlen(s) / 2 + 1, sizeof(char *));
+	if (!spl_str)
+		return (NULL);
+	while (s[i])
+	{
+		if (s[i] == c)
+		{
+			spl_str[str_count] = ft_substr(s, spl_start, i - spl_start);
+			str_count++;
+			spl_start = i + 1;
+		}
+		i++;
+	}
+	return (spl_str);
 }
-
-/*
-int main() {
-
-	char source[] = "eggsandham";
-
-    ft_str_is_alpha(source);
-
-    return 0;
-}
-*/

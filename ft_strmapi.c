@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fvon-der <fvon-der@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 20:10:06 by fvon-der          #+#    #+#             */
-/*   Updated: 2024/03/07 07:39:09 by fvon-der         ###   ########.fr       */
+/*   Created: 2024/03/22 14:43:35 by fvon-der          #+#    #+#             */
+/*   Updated: 2024/03/22 14:43:51 by fvon-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-	int	res;
+	unsigned int	i;
+	char			*res;
 
-	res = 0;
-	if ((c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z'))
-		res = 1;
+	res = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		res[i] = (*f)(i, s[i]);
+		i++;
+	}
+	res[i] = 0;
 	return (res);
 }
-
-/*
-int main() {
-
-	char source[] = "eggsandham";
-
-    ft_str_is_alpha(source);
-
-    return 0;
-}
-*/

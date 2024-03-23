@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fvon-der <fvon-der@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 20:10:06 by fvon-der          #+#    #+#             */
-/*   Updated: 2024/03/07 07:39:09 by fvon-der         ###   ########.fr       */
+/*   Created: 2024/03/22 14:29:32 by fvon-der          #+#    #+#             */
+/*   Updated: 2024/03/22 14:53:22 by fvon-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_itoa(int n)
 {
-	int	res;
+	long	n_aslong;
+	size_t	size;
+	char	*result;
 
-	res = 0;
-	if ((c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z'))
-		res = 1;
-	return (res);
+	n_aslong = n;
+	size = 0;
+	while (n_aslong)
+	{
+		n_aslong /= 10;
+		size++;
+	}
+	result = (char *)calloc(sizeof(char), size + 1);
+	if (!result)
+		return (0);
+	while (n_aslong != 0)
+	{
+		result[size] = ((n_aslong % 10) + 48);
+		n_aslong = n_aslong / 10;
+		size--;
+	}
+	return (result);
 }
-
-/*
-int main() {
-
-	char source[] = "eggsandham";
-
-    ft_str_is_alpha(source);
-
-    return 0;
-}
-*/

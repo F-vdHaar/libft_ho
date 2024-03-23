@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fvon-der <fvon-der@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/06 20:10:06 by fvon-der          #+#    #+#             */
-/*   Updated: 2024/03/07 07:39:09 by fvon-der         ###   ########.fr       */
+/*   Created: 2024/03/22 14:44:08 by fvon-der          #+#    #+#             */
+/*   Updated: 2024/03/22 14:46:43 by fvon-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	int	res;
+	char	*result;
+	int		i;
+	int		j;
 
-	res = 0;
-	if ((c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z'))
-		res = 1;
-	return (res);
+	i = 0;
+	j = 0;
+	result = (char *) ft_calloc(sizeof(char), ft_strlen(s1) + ft_strlen(s2)+1);
+	if (!result || (!s1 && !s2))
+		return (NULL);
+	while (s1[i])
+		result[j++] = s1[i++];
+	i = 0 ;
+	while (s2[i])
+		result[j++] = s2[i++];
+	result[j] = '\0';
+	return (result);
 }
-
-/*
-int main() {
-
-	char source[] = "eggsandham";
-
-    ft_str_is_alpha(source);
-
-    return 0;
-}
-*/

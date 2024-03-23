@@ -6,18 +6,18 @@
 /*   By: fvon-der <fvon-der@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 01:07:06 by fvon-der          #+#    #+#             */
-/*   Updated: 2024/03/07 01:14:43 by fvon-der         ###   ########.fr       */
+/*   Updated: 2024/03/07 07:39:21 by fvon-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_isalnum(int c)
 {
 	int	res;
 
 	res = 0;
-	if ((c >= 'a' && c <= 'z')
-		|| (c >= 'A' && c <= 'Z')
-		|| (c >= '0' && c <= '9'))
+	if (ft_isalpha(c) || ft_isdigit(c))
 		res = 1;
 	return (res);
 }
