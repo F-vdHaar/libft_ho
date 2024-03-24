@@ -6,7 +6,7 @@
 /*   By: fvon-der <fvon-der@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 22:49:19 by fvon-der          #+#    #+#             */
-/*   Updated: 2024/03/23 09:46:22 by fvon-der         ###   ########.fr       */
+/*   Updated: 2024/03/23 17:05:06 by fvon-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_calloc(size_t num_elements, size_t element_size)
 	void	*memptr;
 
 	if (num_elements == 0 || element_size == 0)
-		return (malloc(1));
+		return (malloc(0));
 	if (element_size > INT_MAX / num_elements
 		|| num_elements > INT_MAX / element_size)
 		return (NULL);
